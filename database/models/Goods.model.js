@@ -48,12 +48,12 @@ module.exports = (sequelize, DataTypes) => {
         updatedAt: {
             type: DataTypes.DATE,
             allowNull: false,
-            defaultValue: sequelize.fn('now'),
-        },
+            defaultValue: sequelize.fn('now')
+        }
     }, {
         tableName: 'Goods',
         timestamps: true
-    })
+    });
 
     return Goods;
 };

@@ -22,7 +22,7 @@ module.exports = (sequelize, DataTypes) => {
             validate: {
                 isIn: [['user', 'admin']]
             },
-            defaultValue: "user"
+            defaultValue: 'user'
         },
         login: {
             type: DataTypes.STRING,
@@ -44,7 +44,7 @@ module.exports = (sequelize, DataTypes) => {
             unique: true,
             allowNull: false,
             validate: {
-                isEmail: true,
+                isEmail: true
             }
         },
         refresh_token: {
@@ -55,7 +55,10 @@ module.exports = (sequelize, DataTypes) => {
         phone_number: {
             type: DataTypes.STRING,
             unique: false,
-            allowNull: false
+            allowNull: false,
+            validate: {
+                is: /\(?\+[0-9]{1,3}\)? ?-?[0-9]{1,3} ?-?[0-9]{3,5} ?-?[0-9]{4}( ?-?[0-9]{3})?/
+            }
         },
         createdAt: {
             type: DataTypes.DATE,
@@ -65,8 +68,8 @@ module.exports = (sequelize, DataTypes) => {
         updatedAt: {
             type: DataTypes.DATE,
             allowNull: false,
-            defaultValue: sequelize.fn('now'),
-        },
+            defaultValue: sequelize.fn('now')
+        }
     }, {
         tableName: 'Users',
         timestamps: true

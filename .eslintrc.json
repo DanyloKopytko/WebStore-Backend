@@ -1,0 +1,18 @@
+{
+  "parserOptions": {
+    "ecmaVersion": 8,
+    "sourceType": "module"
+  },
+  "rules": {
+    "indent": ["error", 4],
+    "linebreak-style": ["error", "unix"],
+    "quotes": ["error", "single"],
+    "semi": ["error", "always"],
+    "comma-dangle": ["error", "never"],
+    "disallowMultipleVarDecl": 0,
+    "maximumLineLength": 0,
+    "no-cond-assign": ["error", "always"],
+    "no-console": "off",
+    "no-unused-vars": "error"
+  }
+}

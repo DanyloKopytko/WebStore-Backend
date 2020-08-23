@@ -15,14 +15,14 @@ module.exports = (() => {
                     const [modelName] = file.split('.');
                     models[modelName] = require(path.resolve(`./database/models/${modelName}.model`))(sequelize, Sequelize.DataTypes);
                 });
-                await sequelize.sync({ force: false })
+                await sequelize.sync({ force: false });
             });
         }
 
         return {
             setModels: () => getModels(),
             getModel: modelName => models[modelName]
-        }
+        };
     }
 
     return {
@@ -30,5 +30,5 @@ module.exports = (() => {
             if (!instance) instance = initConnection();
             return instance;
         }
-    }
+    };
 })();

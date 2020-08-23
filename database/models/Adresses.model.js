@@ -27,7 +27,7 @@ module.exports = (sequelize, DataTypes) => {
         street: {
             type: DataTypes.STRING,
             unique: false,
-            allowNull: false,
+            allowNull: false
         },
         house_number: {
             type: DataTypes.STRING,
@@ -47,12 +47,12 @@ module.exports = (sequelize, DataTypes) => {
         updatedAt: {
             type: DataTypes.DATE,
             allowNull: false,
-            defaultValue: sequelize.fn('now'),
-        },
+            defaultValue: sequelize.fn('now')
+        }
     }, {
         tableName: 'Addresses',
         timestamps: true
-    })
-    Addresses.belongsTo(User, {foreignKey: 'user_id'})
+    });
+    Addresses.belongsTo(User, {foreignKey: 'user_id'});
     return Addresses;
-}
+};
