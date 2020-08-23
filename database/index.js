@@ -15,7 +15,7 @@ module.exports = (() => {
                     const [modelName] = file.split('.');
                     models[modelName] = require(path.resolve(`./database/models/${modelName}.model`))(sequelize, Sequelize.DataTypes);
                 });
-                await sequelize.sync({ force: false })
+                await sequelize.sync({ force: true })
             });
 
 
