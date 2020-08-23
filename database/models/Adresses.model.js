@@ -38,7 +38,20 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.INTEGER,
             unique: false,
             allowNull: false
-        }
+        },
+        createdAt: {
+            type: DataTypes.DATE,
+            allowNull: false,
+            defaultValue: sequelize.fn('now')
+        },
+        updatedAt: {
+            type: DataTypes.DATE,
+            allowNull: false,
+            defaultValue: sequelize.fn('now'),
+        },
+    }, {
+        tableName: 'Addresses',
+        timestamps: true
     })
     Addresses.belongsTo(User, {foreignKey: 'user_id'})
     return Addresses;

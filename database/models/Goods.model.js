@@ -39,7 +39,20 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.STRING,
             unique: false,
             allowNull: true
-        }
+        },
+        createdAt: {
+            type: DataTypes.DATE,
+            allowNull: false,
+            defaultValue: sequelize.fn('now')
+        },
+        updatedAt: {
+            type: DataTypes.DATE,
+            allowNull: false,
+            defaultValue: sequelize.fn('now'),
+        },
+    }, {
+        tableName: 'Goods',
+        timestamps: true
     })
 
     return Goods;

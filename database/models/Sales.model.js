@@ -24,7 +24,20 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.DATE,
             allowNull: false,
             defaultValue: sequelize.fn('now')
-        }
+        },
+        createdAt: {
+            type: DataTypes.DATE,
+            allowNull: false,
+            defaultValue: sequelize.fn('now')
+        },
+        updatedAt: {
+            type: DataTypes.DATE,
+            allowNull: false,
+            defaultValue: sequelize.fn('now'),
+        },
+    }, {
+        tableName: 'Sales',
+        timestamps: true
     })
     Sales.belongsTo(Goods, {foreignKey: 'good_id'})
     Sales.belongsTo(User, {foreignKey: 'user_id'})
