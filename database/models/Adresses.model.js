@@ -1,5 +1,8 @@
+const Sequelize = require('sequelize');
+
 module.exports = (sequelize, DataTypes) => {
-    const User = sequelize.import('./Users.model')
+    const User = require('./Users.model')(sequelize, Sequelize);
+
     const Addresses = sequelize.define('Addresses', {
         id: {
             type: DataTypes.INTEGER,

@@ -1,6 +1,8 @@
+const Sequelize = require('sequelize');
+
 module.exports = (sequelize, DataTypes) => {
-    const User = sequelize.import('./Users.model');
-    const Goods = sequelize.import('./Goods.model');
+    const User = require('./Users.model')(sequelize, Sequelize);
+    const Goods = require('./Goods.model')(sequelize, Sequelize);
 
     const Sales = sequelize.define('Sales', {
         id: {

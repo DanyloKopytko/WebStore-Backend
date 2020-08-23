@@ -17,8 +17,6 @@ module.exports = (() => {
                 });
                 await sequelize.sync({ force: true })
             });
-
-
         }
 
         return {
