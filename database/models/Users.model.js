@@ -27,7 +27,10 @@ module.exports = (sequelize, DataTypes) => {
         login: {
             type: DataTypes.STRING,
             unique: true,
-            allowNull: false
+            allowNull: false,
+            validate: {
+                is: /^[a-zA-Z0-9!#$%^&*]*$/
+            }
         },
         avatar_url: {
             type: DataTypes.STRING,

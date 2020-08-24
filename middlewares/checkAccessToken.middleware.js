@@ -1,10 +1,10 @@
-const jwt = require('jsonwebtoken');
+const { tokens } = require('../utils');
 
 module.exports = (req, res, next) => {
     try {
-        jwt.verify(req.headers.authorization, process.env.ACCESS_TOKEN_KEY, function (err, decoded) {
-            req.body.userId = decoded.id;
-        });
+        const decoded = tokens.verify(req.headers.authorization, process.env.ACCESS_TOKEN_KEY);
+        req.body.id = decoded.id;
+
         next();
     } catch (e) {
         return res.status(200).send({error: true, message: 'token is timed out'});

@@ -6,7 +6,8 @@ module.exports = (() => {
     let instance;
 
     function initConnection() {
-        const sequelize = new Sequelize('', 'postgres', process.env.DB_PASSWORD, {host: process.env.DB_HOST, dialect: 'postgres'});
+        const sequelize = new Sequelize('postgres', 'postgres', process.env.DB_PASSWORD, {host: process.env.DB_HOST, dialect: 'postgres'});
+
         const models = {};
 
         function getModels() {

@@ -7,5 +7,7 @@ const { expectedFields: { registrationFields, loginFields } } = require('../../c
 
 router.post('/register', expectedFields(registrationFields), userExist, passValidator, authController.register);
 router.post('/login', expectedFields(loginFields), loginOrMail, authController.login);
+router.post('/getUserByAccessToken', expectedFields(['accessToken']), authController.getUserByAccessToken);
+router.post('/refreshTokens', expectedFields(['refreshToken']), authController.refreshTokens);
 
 module.exports = router;
