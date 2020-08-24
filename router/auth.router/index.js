@@ -1,11 +1,11 @@
 const router = require('express').Router();
 
 const { authController } = require('../../controllers');
-const { expectedFields, userExist, passValidator } = require('../../middlewares');
+const { expectedFields, userExist, passValidator, loginOrMail } = require('../../middlewares');
 
 const { expectedFields: { registrationFields, loginFields } } = require('../../config');
 
 router.post('/register', expectedFields(registrationFields), userExist, passValidator, authController.register);
-router.post('/login', expectedFields(loginFields), authController.login);
+router.post('/login', expectedFields(loginFields), loginOrMail, authController.login);
 
 module.exports = router;

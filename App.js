@@ -6,6 +6,7 @@ require('dotenv').config();
 const app = express();
 
 const db = require('./database').getInstance();
+const middlewares = require('./middlewares');
 
 db.setModels();
 
@@ -15,7 +16,7 @@ app.use(fileupload({}));
 
 const { usersRouter, authRouter } = require('./router');
 
-app.use('/users', usersRouter);
+app.use('/users', middlewares.checkAccessToken, usersRouter);
 app.use('/auth', authRouter);
 
 app.all('*', (req, res) => res.status(404).json('No such url or api or whatever ┐( ͡° ʖ̯ ͡°)┌'));
