@@ -30,5 +30,8 @@
     "pg": "8.3.0",
     "sequelize": "^6.3.4",
     "uuid": "^8.3.0"
+  },
+  "devDependencies": {
+    "jsonwebtoken": "^8.5.1"
   }
 }

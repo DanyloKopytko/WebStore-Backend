@@ -1,3 +1,3 @@
 module.exports = {
-    getAll: require('./getAll.controller'),
+    getAll: require('./getAll.controller')
 };
