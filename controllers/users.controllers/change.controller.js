@@ -2,7 +2,7 @@ const db = require('../../database/').getInstance();
 
 module.exports = async (req, res) => {
     try {
-        const { id } = req.body;
+        const { userId } = req.body;
 
         const obj = {};
 
@@ -16,7 +16,7 @@ module.exports = async (req, res) => {
 
         const UserModel = db.getModel('Users');
 
-        UserModel.update(obj, {where: {id}, returning: true}).then(data => {
+        UserModel.update(obj, {where: { id: userId }, returning: true}).then(data => {
             data[1][0].pass = null;
             res.status(200).send({error: false, user: data[1][0]});
         });

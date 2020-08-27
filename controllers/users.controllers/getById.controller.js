@@ -3,11 +3,11 @@ const db = require('../../database').getInstance();
 module.exports = (req, res) => {
     try {
         const UserModel = db.getModel('Users');
+
         const {id} = req.params;
 
-        UserModel.findByPk(id)
+        UserModel.findAll({where: {id}, attributes: {exclude: ['pass']}})
             .then(data => {
-                console.log(data);
                 res.send(data);
             });
     } catch (e) {
