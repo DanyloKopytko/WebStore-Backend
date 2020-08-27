@@ -8,13 +8,12 @@ module.exports = async (req, res) => {
 
         const decoded = await tokens.verify(req.headers.authorization, process.env.REFRESH_TOKEN_KEY);
         req.body.id = decoded.id;
-
-        const data = await UserModel.findOne({
+        const [data] = await Promise.all([UserModel.findOne({
             where: {
                 id: decoded.id,
                 refresh_token: req.headers.authorization
             }
-        });
+        })]);
 
         if (!data) return res.status(200).send('bad token');
 

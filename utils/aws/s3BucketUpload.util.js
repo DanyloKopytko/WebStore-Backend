@@ -2,7 +2,7 @@ const { v4 } = require('uuid');
 
 const s3 = require('../../aws');
 
-module.exports = async (type, image, newUser) => {
+module.exports = async (type, image, entity) => {
     try {
         if (image.length > 1) throw new Error('Only 1 image for user allowed');
 
@@ -15,7 +15,7 @@ module.exports = async (type, image, newUser) => {
 
         await s3.upload(uploadParams, async (e, data) => {
             if (e) throw new Error(e.message);
-            await newUser.update({avatar_url: data.Location});
+            await entity.update({avatar_url: data.Location});
         });
     } catch (e) {
         throw new Error(e.message);
