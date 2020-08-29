@@ -39,7 +39,7 @@ module.exports = (sequelize, DataTypes) => {
         tableName: 'Sales',
         timestamps: true
     });
-    Sales.belongsTo(Goods, {foreignKey: 'good_id'});
-    Sales.belongsTo(User, {foreignKey: 'user_id'});
+    Sales.belongsTo(Goods, {foreignKey: 'id'});
+    Sales.belongsTo(User, {foreignKey: 'id'});
     return Sales;
 };

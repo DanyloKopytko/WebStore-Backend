@@ -1,8 +1,4 @@
-const Sequelize = require('sequelize');
-
 module.exports = (sequelize, DataTypes) => {
-    const Categories = require('./Categories.model')(sequelize, Sequelize);
-
     const Goods = sequelize.define('Goods', {
         id: {
             type: DataTypes.INTEGER,
@@ -58,8 +54,6 @@ module.exports = (sequelize, DataTypes) => {
         tableName: 'Goods',
         timestamps: true
     });
-
-    Goods.belongsTo(Categories, {foreignKey: 'category'});
 
     return Goods;
 };
