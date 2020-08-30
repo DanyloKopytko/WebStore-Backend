@@ -1,4 +1,8 @@
+const Sequelize = require('sequelize');
+
 module.exports = (sequelize, DataTypes) => {
+    const Categories = require('./Categories.model')(sequelize, Sequelize);
+
     const Goods = sequelize.define('Goods', {
         id: {
             type: DataTypes.INTEGER,
@@ -6,7 +10,7 @@ module.exports = (sequelize, DataTypes) => {
             autoIncrement: true
         },
         article: {
-            type: DataTypes.INTEGER,
+            type: DataTypes.BIGINT,
             unique: true,
             allowNull: false
         },
@@ -35,10 +39,11 @@ module.exports = (sequelize, DataTypes) => {
             unique: false,
             allowNull: false
         },
-        category: {
+        category_id: {
             type: DataTypes.INTEGER,
             unique: false,
-            allowNull: true
+            allowNull: true,
+            foreignKey: true
         },
         createdAt: {
             type: DataTypes.DATE,
@@ -54,6 +59,8 @@ module.exports = (sequelize, DataTypes) => {
         tableName: 'Goods',
         timestamps: true
     });
+
+    Goods.belongsTo(Categories, {foreignKey: 'category_id'});
 
     return Goods;
 };

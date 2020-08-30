@@ -10,7 +10,7 @@ module.exports = async (req, res) => {
             name
         }, {returning: true});
 
-        return res.status(200).send({error: false, message: newCategory});
+        return res.status(200).send({error: false, newCategory});
     } catch (e) {
         console.log(e);
         res.status(200).send({error: true, message: e.message});

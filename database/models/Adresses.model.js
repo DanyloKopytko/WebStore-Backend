@@ -53,6 +53,8 @@ module.exports = (sequelize, DataTypes) => {
         tableName: 'Addresses',
         timestamps: true
     });
+
     Addresses.belongsTo(User, {foreignKey: 'user_id'});
+
     return Addresses;
 };

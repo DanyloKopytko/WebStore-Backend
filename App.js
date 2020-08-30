@@ -15,11 +15,12 @@ app.use(fileupload({}));
 
 const middlewares = require('./middlewares');
 
-const { usersRouter, authRouter, categoriesRouter } = require('./router');
+const { usersRouter, authRouter, categoriesRouter, goodsRouter } = require('./router');
 
 app.use('/auth', authRouter);
 app.use('/users', middlewares.checkAccessToken, usersRouter);
 app.use('/categories', middlewares.checkAccessToken, categoriesRouter);
+app.use('/goods', middlewares.checkAccessToken, goodsRouter);
 
 app.all('*', (req, res) => res.status(404).json('No such url or api or whatever ┐( ͡° ʖ̯ ͡°)┌'));
 

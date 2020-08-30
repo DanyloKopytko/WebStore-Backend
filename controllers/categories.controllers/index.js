@@ -1,6 +1,6 @@
 module.exports = {
-    addCategory: require('./addCategory.controller'),
-    changeCategory: require('./changeCategory.controller'),
-    getCategories: require('./getCategories.controller'),
-    deleteCategory: require('./deleteCategory.controller')
+    addCategory: require('./add.controller'),
+    changeCategory: require('./change.controller'),
+    getCategories: require('./get.controller'),
+    deleteCategory: require('./delete.controller')
 };

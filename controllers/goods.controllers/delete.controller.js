@@ -2,11 +2,13 @@ const db = require('../../database').getInstance();
 
 module.exports = async (req, res) => {
     try {
-        const CategoriesModel = db.getModel('Categories');
+        const { id } = req.body;
 
-        const categories = await CategoriesModel.findAll();
+        const GoodsModel = db.getModel('Goods');
 
-        return res.status(200).send({error: false, message: categories});
+        await GoodsModel.destroy({where: {id}});
+
+        return res.status(200).send({error: false, message: 'Deleted'});
     } catch (e) {
         console.log(e);
         res.status(200).send({error: true, message: e.message});
