@@ -27,12 +27,13 @@ module.exports = (sequelize, DataTypes) => {
         characteristics: {
             type: DataTypes.JSONB,
             unique: false,
-            allowNull: false
+            allowNull: true
         },
         count: {
             type: DataTypes.INTEGER,
             unique: false,
-            allowNull: true
+            allowNull: true,
+            defaultValue: 0
         },
         price: {
             type: DataTypes.NUMERIC,

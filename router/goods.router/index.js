@@ -10,6 +10,7 @@ router.get('/:category_id', goodsController.getByCategory);
 router.use(middlewares.isAdmin);
 
 router.post('/', middlewares.expectedFields(goodsFields), goodsController.add);
+router.post('/insertExcelDataIntoDB', goodsController.insertExcelDataIntoDB);
 
 router.patch('/', goodsController.change);
 
