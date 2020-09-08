@@ -1,43 +1,44 @@
-const Sequelize = require('sequelize');
-
 module.exports = (sequelize, DataTypes) => {
-    const User = require('./Users.model')(sequelize, Sequelize);
-
-    const Addresses = sequelize.define('Addresses', {
+    const Orders = sequelize.define('Orders', {
         id: {
             type: DataTypes.INTEGER,
             primaryKey: true,
             autoIncrement: true
         },
-        user_id: {
-            type: DataTypes.INTEGER,
-            unique: true,
+        goods_ids: {
+            type: DataTypes.ARRAY(DataTypes.INTEGER),
             allowNull: false
         },
-        region: {
+        status: {
             type: DataTypes.STRING,
-            unique: false,
-            allowNull: false
+            allowNull: false,
+            defaultValue: 'pending'
         },
-        city: {
-            type: DataTypes.STRING,
-            unique: false,
-            allowNull: false
-        },
-        street: {
-            type: DataTypes.STRING,
-            unique: false,
-            allowNull: false
-        },
-        house_number: {
-            type: DataTypes.STRING,
-            unique: false,
-            allowNull: false
-        },
-        apart_number: {
+        new_post_department_id: {
             type: DataTypes.INTEGER,
             unique: false,
             allowNull: false
+        },
+        name: {
+            type: DataTypes.STRING,
+            unique: false,
+            allowNull: false
+        },
+        surname: {
+            type: DataTypes.STRING,
+            unique: false,
+            allowNull: false
+        },
+        middle_name: {
+            type: DataTypes.STRING,
+            allowNull: true
+        },
+        phone_number: {
+            type: DataTypes.STRING,
+            allowNull: false,
+            validate: {
+                is: /\(?\+[0-9]{1,3}\)? ?-?[0-9]{1,3} ?-?[0-9]{3,5} ?-?[0-9]{4}( ?-?[0-9]{3})?/
+            }
         },
         createdAt: {
             type: DataTypes.DATE,
@@ -50,11 +51,9 @@ module.exports = (sequelize, DataTypes) => {
             defaultValue: sequelize.fn('now')
         }
     }, {
-        tableName: 'Addresses',
+        tableName: 'Orders',
         timestamps: true
     });
 
-    Addresses.belongsTo(User, {foreignKey: 'user_id'});
-
-    return Addresses;
+    return Orders;
 };

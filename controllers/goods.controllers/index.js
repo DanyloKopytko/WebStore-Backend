@@ -3,5 +3,6 @@ module.exports = {
     getByCategory: require('./getByCategory.controller'),
     change: require('./change.controller'),
     delete: require('./delete.controller'),
-    insertExcelDataIntoDB: require('./insertExcelDataIntoDB.controller')
+    insertExcelDataIntoDB: require('./insertExcelDataIntoDB.controller'),
+    formOrder: require('./formOrder.controller')
 };

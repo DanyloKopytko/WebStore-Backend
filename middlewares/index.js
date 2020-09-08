@@ -4,5 +4,6 @@ module.exports = {
     passValidator: require('./passValidator.middleware'),
     loginOrMail: require('./loginOrMail.middleware'),
     checkAccessToken: require('./checkAccessToken.middleware'),
-    isAdmin: require('./isAdmin.middleware')
+    isAdmin: require('./isAdmin.middleware'),
+    signedInCheck: require('./signedInCheck.middleware')
 };

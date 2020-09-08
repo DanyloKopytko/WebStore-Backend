@@ -1,10 +1,11 @@
 const router = require('express').Router();
 
-const { expectedFields: { goodsFields } } = require('../../config');
+const { expectedFields: { goodsFields, orderFields } } = require('../../config');
 
 const { goodsController } = require('../../controllers');
 const middlewares = require('../../middlewares');
 
+router.post('/order', middlewares.expectedFields(orderFields), middlewares.signedInCheck, goodsController.formOrder);
 router.get('/:category_id', goodsController.getByCategory);
 
 router.use(middlewares.isAdmin);

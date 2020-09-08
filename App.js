@@ -20,7 +20,7 @@ const { usersRouter, authRouter, categoriesRouter, goodsRouter } = require('./ro
 app.use('/auth', authRouter);
 app.use('/users', middlewares.checkAccessToken, usersRouter);
 app.use('/categories', middlewares.checkAccessToken, categoriesRouter);
-app.use('/goods', middlewares.checkAccessToken, goodsRouter);
+app.use('/goods', goodsRouter);
 
 app.all('*', (req, res) => res.status(404).json('No such url or api or whatever ┐( ͡° ʖ̯ ͡°)┌'));
 
