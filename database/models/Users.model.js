@@ -22,7 +22,8 @@ module.exports = (sequelize, DataTypes) => {
             validate: {
                 isIn: [['user', 'admin']]
             },
-            defaultValue: 'user'
+            defaultValue: 'user',
+            set: () => {}
         },
         login: {
             type: DataTypes.STRING,

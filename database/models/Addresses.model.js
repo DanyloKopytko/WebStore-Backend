@@ -3,7 +3,7 @@ const Sequelize = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
     const User = require('./Users.model')(sequelize, Sequelize);
 
-    const Sales = sequelize.define('Sales', {
+    const Addresses = sequelize.define('Addresses', {
         id: {
             type: DataTypes.INTEGER,
             primaryKey: true,
@@ -11,18 +11,13 @@ module.exports = (sequelize, DataTypes) => {
         },
         user_id: {
             type: DataTypes.INTEGER,
-            unique: false,
-            allowNull: true
-        },
-        goods_ids: {
-            type: DataTypes.ARRAY(DataTypes.INTEGER),
-            unique: false,
+            unique: true,
             allowNull: false
         },
-        sell_date: {
-            type: DataTypes.DATE,
-            allowNull: false,
-            defaultValue: sequelize.fn('now')
+        new_post_department_id: {
+            type: DataTypes.INTEGER,
+            unique: false,
+            allowNull: false
         },
         createdAt: {
             type: DataTypes.DATE,
@@ -35,9 +30,11 @@ module.exports = (sequelize, DataTypes) => {
             defaultValue: sequelize.fn('now')
         }
     }, {
-        tableName: 'Sales',
+        tableName: 'Addresses',
         timestamps: true
     });
-    Sales.belongsTo(User, {foreignKey: 'user_id'});
-    return Sales;
+
+    Addresses.belongsTo(User, {foreignKey: 'user_id'});
+
+    return Addresses;
 };

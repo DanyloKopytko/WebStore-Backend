@@ -2,24 +2,21 @@ const db = require('../../database/').getInstance();
 
 module.exports = async (req, res) => {
     try {
-        const { userId } = req.body;
+        const { goods_id } = req.body;
 
         const obj = {};
 
         for (const key in req.body) {
-            if (key !== 'pass' && key !== 'refresh_token') {
+            if (key !== 'price' && key !== 'count') {
                 if (req.body[key] && req.body.hasOwnProperty(key)) {
                     obj[key] = req.body[key];
                 }
             }
         }
 
-        obj.id = userId;
+        const GoodsModel = db.getModel('Goods');
 
-        const UserModel = db.getModel('Users');
-
-        UserModel.update(obj, {where: { id: userId }, returning: true}).then(data => {
-            data[1][0].pass = null;
+        GoodsModel.update(obj, {where: { id: goods_id }, returning: true}).then(data => {
             res.status(200).send({error: false, user: data[1][0]});
         });
     } catch (e) {

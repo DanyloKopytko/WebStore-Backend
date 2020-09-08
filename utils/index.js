@@ -3,5 +3,6 @@ module.exports = {
     mailer: require('./mailer.util'),
     aws: require('./aws'),
     passCompare: require('./passCompare.util'),
-    tokens: require('./tokens')
+    tokens: require('./tokens'),
+    excelParser: require('./excelParser.util')
 };
