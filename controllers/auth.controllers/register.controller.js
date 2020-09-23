@@ -10,6 +10,8 @@ module.exports = async (req, res) => {
 
         const hash = await hasher(pass);
 
+        console.log(req.files);
+
         const newUser = await UserModel.create({
             name,
             surname,
@@ -19,7 +21,7 @@ module.exports = async (req, res) => {
             phone_number
         }, {returning: true});
 
-        await aws.s3BucketUpload('users', req.files.image, newUser);
+        await aws.s3BucketUpload('users', req.files.avatar, newUser);
 
         await mailer('Registration completed', 'THANK YOU FOR REGISTRATION', email);
 

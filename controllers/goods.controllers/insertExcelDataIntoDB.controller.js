@@ -10,6 +10,7 @@ module.exports = async (req, res) => {
 
         await Promise.all(parsedExcel.map(async product => {
             const {Article, Naming, Description, Price, ...rest} = product;
+
             await GoodsModel.create({
                 article: Article,
                 naming: Naming,

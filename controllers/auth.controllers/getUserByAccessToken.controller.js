@@ -5,7 +5,7 @@ const { tokens } = require('../../utils');
 module.exports = async (req, res) => {
     try {
         const UserModel = db.getModel('Users');
-
+        console.log(req.body);
         const { accessToken } = req.body;
 
         const decoded = tokens.verify(accessToken, process.env.ACCESS_TOKEN_KEY);
