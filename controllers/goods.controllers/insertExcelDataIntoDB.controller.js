@@ -9,11 +9,14 @@ module.exports = async (req, res) => {
         const GoodsModel = db.getModel('Goods');
 
         await Promise.all(parsedExcel.map(async product => {
+            const {Article, Naming, Description, Price, ...rest} = product;
+
             await GoodsModel.create({
-                article: product.Article,
-                naming: product.Naming,
-                description: product.Description,
-                price: product.Price
+                article: Article,
+                naming: Naming,
+                description: Description,
+                price: Price,
+                characteristics: rest
             });
         })).then(() => {
             res.status(200).send({error: false});

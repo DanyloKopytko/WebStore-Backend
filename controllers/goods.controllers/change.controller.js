@@ -7,10 +7,8 @@ module.exports = async (req, res) => {
         const obj = {};
 
         for (const key in req.body) {
-            if (key !== 'price' && key !== 'count') {
-                if (req.body[key] && req.body.hasOwnProperty(key)) {
-                    obj[key] = req.body[key];
-                }
+            if (req.body[key] && req.body.hasOwnProperty(key)) {
+                obj[key] = req.body[key];
             }
         }
 

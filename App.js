@@ -1,6 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const fileupload = require('express-fileupload');
+const cors = require('cors');
 require('dotenv').config();
 
 const app = express();
@@ -17,6 +18,7 @@ const middlewares = require('./middlewares');
 
 const { usersRouter, authRouter, categoriesRouter, goodsRouter } = require('./router');
 
+app.use(cors());
 app.use('/auth', authRouter);
 app.use('/users', middlewares.checkAccessToken, usersRouter);
 app.use('/categories', middlewares.checkAccessToken, categoriesRouter);
