@@ -7,6 +7,7 @@ module.exports = async (req, res) => {
         const UserModel = db.getModel('Users');
 
         const decoded = await tokens.verify(req.headers.authorization, process.env.REFRESH_TOKEN_KEY);
+
         req.body.id = decoded.id;
         const [data] = await Promise.all([UserModel.findOne({
             where: {
@@ -15,7 +16,7 @@ module.exports = async (req, res) => {
             }
         })]);
 
-        if (!data) return res.status(200).send('bad token');
+        if (!data) return res.status(200).send('Bad token');
 
         const {id: userId, accessToken, refreshToken} = await tokens.create(decoded.id);
 
