@@ -10,7 +10,7 @@ module.exports = async (req, res) => {
 
         const user = await UserModel.findByPk(req.body.userId);
 
-        const newPhoto = await aws.s3BucketDelete('users', req.body.photoUrl, user);
+        const newPhoto = await aws.s3BucketDelete('users', req.body.avatar_url, user);
         await aws.s3BucketUpload('users', image, user);
 
         return res.status(200).send({error: false, newPhoto});

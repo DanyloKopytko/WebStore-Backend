@@ -4,9 +4,9 @@ module.exports = (req, res) => {
     try {
         const UserModel = db.getModel('Users');
 
-        const {id} = req.params;
+        const {userId} = req.body;
 
-        UserModel.findAll({where: {id}, attributes: {exclude: ['pass']}})
+        UserModel.findAll({where: {userId}, attributes: {exclude: ['pass']}})
             .then(data => {
                 res.send(data);
             });

@@ -12,7 +12,7 @@ module.exports = async (req, res) => {
 
         const user = await UserModel.findOne({
             where: {
-                [Op.or]: [{email: req.body.mail ? req.body.mail : ''}, {login: req.body.login ? req.body.login : ''}]
+                [Op.or]: [{email: req.body.email ? req.body.email : ''}, {login: req.body.login ? req.body.login : ''}]
             }
         });
 
@@ -25,12 +25,12 @@ module.exports = async (req, res) => {
                 name: user.name,
                 surname: user.surname,
                 login: user.login,
-                mail: user.mail,
+                email: user.email,
                 role: user.role,
                 avatar_url: user.avatar_url
             });
         }).catch((e) => {
-            res.status(200).send({error: true, message: e.message});
+            res.status(200).send({error: true, message: e});
         });
     } catch (e) {
         console.log(e);

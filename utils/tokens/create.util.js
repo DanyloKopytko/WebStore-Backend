@@ -5,7 +5,7 @@ module.exports = async (userId) => {
     try {
         const UserModel = db.getModel('Users');
 
-        const accessToken = await jwt.sign({id: userId}, process.env.ACCESS_TOKEN_KEY, {expiresIn: 20});
+        const accessToken = await jwt.sign({id: userId}, process.env.ACCESS_TOKEN_KEY, {expiresIn: 120});
         const refreshToken = await jwt.sign({id: userId}, process.env.REFRESH_TOKEN_KEY);
 
         await UserModel.update({refresh_token: refreshToken}, {where: {id: userId}});

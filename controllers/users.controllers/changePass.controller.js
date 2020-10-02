@@ -13,13 +13,15 @@ module.exports = async(req, res) => {
         await passCompare(user.pass, oldPass).then(async () => {
             const hash = await hasher(newPass);
 
-            const newUserData = await user.update({pass: hash}, {returning: true});
+            await user.update({pass: hash}, {returning: true});
 
-            return res.status(200).send({error: false, message: newUserData});
+            return res.status(200).send({error: false, message: 'Successfully changed'});
         }).catch((e) => {
-            return res.status(200).send({error: true, message: e.message});
+            console.log(e);
+            return res.status(200).send({error: true, message: 'Wrong password'});
         });
     } catch (e) {
+        console.log(e);
         return res.status(200).send({error: true, message: e.message});
     }
 };

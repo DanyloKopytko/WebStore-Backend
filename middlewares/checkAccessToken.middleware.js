@@ -7,6 +7,6 @@ module.exports = (req, res, next) => {
 
         next();
     } catch (e) {
-        return res.status(200).send({error: true, message: 'token is timed out'});
+        return res.status(200).send({error: true, message: 'jwt expired'});
     }
 };
