@@ -10,6 +10,9 @@ router.patch('/', usersController.change);
 router.patch('/photo', usersController.changePhoto);
 router.patch('/changePass', usersController.changePass);
 
+router.post('/sendVerifyEmail', usersController.sendVerifyEmail);
+router.post('/verifyEmail', usersController.verifyEmail);
+
 router.delete('/', usersController.remove);
 
 module.exports = router;

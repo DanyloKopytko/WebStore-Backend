@@ -64,13 +64,12 @@ module.exports = (sequelize, DataTypes) => {
                 is: /\(?\+[0-9]{1,3}\)? ?-?[0-9]{1,3} ?-?[0-9]{3,5} ?-?[0-9]{4}( ?-?[0-9]{3})?/
             }
         },
-        //Waiting for frontend
-        // verified: {
-        //     type: DataTypes.BOOLEAN,
-        //     unique: false,
-        //     allowNull: false,
-        //     defaultValue: false
-        // },
+        verified: {
+            type: DataTypes.BOOLEAN,
+            unique: false,
+            allowNull: false,
+            defaultValue: false
+        },
         createdAt: {
             type: DataTypes.DATE,
             allowNull: false,
