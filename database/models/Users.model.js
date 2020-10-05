@@ -70,6 +70,11 @@ module.exports = (sequelize, DataTypes) => {
             allowNull: false,
             defaultValue: false
         },
+        refreshPass: {
+            type: DataTypes.STRING,
+            unique: true,
+            allowNull: false
+        },
         createdAt: {
             type: DataTypes.DATE,
             allowNull: false,

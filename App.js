@@ -3,6 +3,7 @@ const bodyParser = require('body-parser');
 const fileupload = require('express-fileupload');
 const cors = require('cors');
 require('dotenv').config();
+const bcrypt = require('bcrypt');
 
 const app = express();
 

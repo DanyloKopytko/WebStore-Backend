@@ -1,4 +1,5 @@
 const db = require('../../database').getInstance();
+const { v4 } = require('uuid');
 
 const { hasher, mailer, aws } = require('../../utils');
 
@@ -9,6 +10,7 @@ module.exports = async (req, res) => {
         const UserModel = db.getModel('Users');
 
         const hash = await hasher(pass);
+        const refreshPass = await v4();
 
         console.log(req.files);
 
@@ -18,7 +20,8 @@ module.exports = async (req, res) => {
             login,
             pass: hash,
             email,
-            phone_number
+            phone_number,
+            refreshPass
         }, {returning: true});
 
         await aws.s3BucketUpload('users', req.files.avatar, newUser);

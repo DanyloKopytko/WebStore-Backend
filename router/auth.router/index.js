@@ -9,5 +9,7 @@ router.post('/register', expectedFields(registrationFields), userExist, passVali
 router.post('/login', expectedFields(loginFields), loginOrMail, authController.login);
 router.post('/getUserByAccessToken', authController.getUserByAccessToken);
 router.post('/refreshTokens', authController.refreshTokens);
+router.post('/sendRefreshPass', authController.sendRefreshPass);
+router.post('/refreshPass', passValidator, authController.refreshPass);
 
 module.exports = router;
